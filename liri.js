@@ -111,4 +111,8 @@ switch (command) {
                     break;
             };
         });
+    // Default case, in case user enters an unrecognized command
+    default:
+        console.log("*Unrecognized command*\nPlease use the following commands after 'node liri':" +
+            "\n1. <my-tweets>\n2. <spotify-this-song>\n3. <movie-this>\n4. <do-what-it-says>");
 };
