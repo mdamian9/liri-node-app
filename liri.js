@@ -20,8 +20,13 @@ function myTweets() {
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (!error) {
             for (var i = 0; i < tweets.length; i++) {
-                console.log("Tweet: " + '"' + tweets[i].text + '"' + "\nDate: " + tweets[i].created_at + "\n");
+                var output = "Tweet: " + '"' + tweets[i].text + '"' + "\nDate: " + tweets[i].created_at + "\n";
+                console.log(output);
+                fs.appendFile('./log.txt', output + "\n", (error) => {
+                    if (error) throw error;
+                });
             };
+
         } else {
             console.log(error);
         };
@@ -36,8 +41,12 @@ function spotifySong(songName) {
             if (error) {
                 return console.log('Error occurred: ' + error);
             } else {
-                console.log("Artist(s): " + data.tracks.items[0].artists[0].name + "\nSong name: " + '"' + data.tracks.items[0].name + '"' +
-                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name);
+                var output = "Artist(s): " + data.tracks.items[0].artists[0].name + "\nSong name: " + '"' + data.tracks.items[0].name + '"' +
+                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name;
+                console.log(output);
+                fs.appendFile('./log.txt', output + "\n", (error) => {
+                    if (error) throw error;
+                });
             };
         });
         // If user did not give input for a song, search for Billi Jean by Michael Jackson as default
@@ -46,8 +55,12 @@ function spotifySong(songName) {
             if (error) {
                 return console.log('Error occurred: ' + error);
             } else {
-                console.log("Artist(s): " + data.tracks.items[0].artists[0].name + "\nSong name: " + '"' + data.tracks.items[0].name + '"' +
-                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name);
+                var output = "Artist(s): " + data.tracks.items[0].artists[0].name + "\nSong name: " + '"' + data.tracks.items[0].name + '"' +
+                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name
+                console.log(output);
+                fs.appendFile('./log.txt', output + "\n", (error) => {
+                    if (error) throw error;
+                });
             };
         });
     };
@@ -59,17 +72,25 @@ function movieThis(movieName) {
     if (movieName) {
         request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieName, function (error, response, body) {
             var jsonObj = JSON.parse(body);
-            console.log("Movie name: " + jsonObj.Title + "\nYear released: " + jsonObj.Year + "\nIMDB rating: " + jsonObj.imdbRating +
+            var output = "Movie name: " + jsonObj.Title + "\nYear released: " + jsonObj.Year + "\nIMDB rating: " + jsonObj.imdbRating +
                 "\nRotten Tomatoes rating: " + jsonObj.Ratings[1].Value + "\nCountry of production: " + jsonObj.Country + "\nLanguage: " +
-                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors);
+                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors
+            console.log(output);
+            fs.appendFile('./log.txt', output + "\n", (error) => {
+                if (error) throw error;
+            });
         });
         // If user did not give input for a movie, search for "Mr. Nobody" as default
     } else {
         request('http://www.omdbapi.com/?apikey=trilogy&t=Mr. Nobody', function (error, response, body) {
             var jsonObj = JSON.parse(body);
-            console.log("Movie name: " + jsonObj.Title + "\nYear released: " + jsonObj.Year + "\nIMDB rating: " + jsonObj.imdbRating +
+            var output = "Movie name: " + jsonObj.Title + "\nYear released: " + jsonObj.Year + "\nIMDB rating: " + jsonObj.imdbRating +
                 "\nRotten Tomatoes rating: " + jsonObj.Ratings[1].Value + "\nCountry of production: " + jsonObj.Country + "\nLanguage: " +
-                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors);
+                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors
+            console.log(output);
+            fs.appendFile('./log.txt', output + "\n", (error) => {
+                if (error) throw error;
+            });
         });
     };
 };
