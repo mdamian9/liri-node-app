@@ -42,7 +42,7 @@ function spotifySong(songName) {
                 return console.log('Error occurred: ' + error);
             } else {
                 var output = "Artist(s): " + data.tracks.items[0].artists[0].name + "\nSong name: " + '"' + data.tracks.items[0].name + '"' +
-                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name;
+                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name + "\n";
                 console.log(output);
                 fs.appendFile('./log.txt', output + "\n", (error) => {
                     if (error) throw error;
@@ -56,7 +56,7 @@ function spotifySong(songName) {
                 return console.log('Error occurred: ' + error);
             } else {
                 var output = "Artist(s): " + data.tracks.items[0].artists[0].name + "\nSong name: " + '"' + data.tracks.items[0].name + '"' +
-                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name
+                    "\nPreview link: " + data.tracks.items[0].preview_url + "\nAlbum: " + data.tracks.items[0].album.name + "\n";
                 console.log(output);
                 fs.appendFile('./log.txt', output + "\n", (error) => {
                     if (error) throw error;
@@ -74,7 +74,7 @@ function movieThis(movieName) {
             var jsonObj = JSON.parse(body);
             var output = "Movie name: " + jsonObj.Title + "\nYear released: " + jsonObj.Year + "\nIMDB rating: " + jsonObj.imdbRating +
                 "\nRotten Tomatoes rating: " + jsonObj.Ratings[1].Value + "\nCountry of production: " + jsonObj.Country + "\nLanguage: " +
-                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors
+                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors + "\n";
             console.log(output);
             fs.appendFile('./log.txt', output + "\n", (error) => {
                 if (error) throw error;
@@ -86,7 +86,7 @@ function movieThis(movieName) {
             var jsonObj = JSON.parse(body);
             var output = "Movie name: " + jsonObj.Title + "\nYear released: " + jsonObj.Year + "\nIMDB rating: " + jsonObj.imdbRating +
                 "\nRotten Tomatoes rating: " + jsonObj.Ratings[1].Value + "\nCountry of production: " + jsonObj.Country + "\nLanguage: " +
-                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors
+                jsonObj.Language + "\nPlot: " + jsonObj.Plot + "\nActors: " + jsonObj.Actors + "\n";
             console.log(output);
             fs.appendFile('./log.txt', output + "\n", (error) => {
                 if (error) throw error;
